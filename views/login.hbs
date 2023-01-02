@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Login</title>
+</head>
+<body>
+    {{#if message}}
+        <h5 class="alert success">{{ message }}</h5>
+    {{/if}}
+    <main class="main-container">
+        <div class="cadastrar-window">
+            <form class="formulario" method="POST" action="/auth/login">
+                <input type="text" placeholder="Email" name="email">
+                <input type="password" placeholder="Senha" name="senha">
+                <input type="submit" value="Entrar">
+            </form>
+            <p>Ainda não possui uma conta? Clique aqui para <span><a class="entrar-text-link" href="/cadastro">Cadastrar</a></span></p>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "colecionador-de-poetas",
+  "version": "1.0.0",
+  "description": "Simples app onde o usuário pode colecionar cartas de poetas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodukao/colecionador-de-poetas.git"
+  },
+  "author": "Rodukao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodukao/colecionador-de-poetas/issues"
+  },
+  "homepage": "https://github.com/rodukao/colecionador-de-poetas#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "handlebars": "^4.7.7",
+    "hbs": "^4.2.0",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7"
+  }
+}

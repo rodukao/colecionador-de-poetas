@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Cadastre-se</title>
+</head>
+<body>
+    {{#if message}}
+        <h5 class="alert error">{{ message }}</h5>
+    {{/if}}
+    <main class="main-container">
+        <div class="cadastrar-window">
+            <form class="formulario" method="POST" action="/auth/register">
+                <input type="text" placeholder="Nome" name="nome">
+                <input type="text" placeholder="Email" name="email">
+                <input type="password" placeholder="Senha" name="senha">
+                <input type="submit" value="Criar conta">
+            </form>
+            <p>Se você já possui uma conta, clique aqui para <span><a class="entrar-text-link" href="/login">Entrar</a></span></p>
+        </div>
+    </main>
+</body>
+</html>
