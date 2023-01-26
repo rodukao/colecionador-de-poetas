@@ -75,7 +75,7 @@ router.get('/carta', (req, res) => {
                             if(err) console.log(err);
                             else{
                                 console.log(result)
-                                res.render('index')
+                                res.send({Resp: "Você adquiriu uma carta nova."})
                             }
                         })
                     }

@@ -48,5 +48,34 @@ function SorteiaCarta(){
     fetch('../../data/carta', {method: 'GET'})
     .then(response => response.json()).then((cartas) => {
         console.log(cartas)
+        fetch('../../data/user-info', {method: 'GET'})
+        .then(response => response.json()).then((userData) => {
+            atualizaCartas(userData)
+        })
     })
+}
+
+function atualizaCartas(userData){
+    const totalCartas = 8;
+    cardsWindow.innerHTML = ``;
+    let cartasUsuarios = [];
+    const nomeCartas = [];
+    for(let i = 0; i < userData[1].length; i++){
+        nomeCartas[userData[1][i].idCarta] = userData[1][i].nomeCarta
+    }
+    userData[1].map(item => cartasUsuarios.push(item.idCarta));
+
+    for(let i = 1; i <= totalCartas; i++){
+        cardsWindow.innerHTML += `
+            <div class='card' id='card-${i}'>
+                <h3 class='titulo-carta' id='titulo-carta-${i}'>?????</h3>
+            </div>
+        `;
+        
+        if(cartasUsuarios.includes(i)){
+            const element = document.querySelector(`#card-${i}`);
+            element.style.backgroundColor = 'green';
+            document.querySelector(`#titulo-carta-${i}`).innerHTML = `${nomeCartas[i]}`
+        }
+    }
 }
