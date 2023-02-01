@@ -45,6 +45,7 @@ fetch('../../data/user-info', {method: 'GET'})
 })
 
 function SorteiaCarta(){
+    atualizaHorario();
     fetch('../../data/carta', {method: 'GET'})
     .then(response => response.json()).then((cartas) => {
         console.log(cartas)
@@ -78,4 +79,11 @@ function atualizaCartas(userData){
             document.querySelector(`#titulo-carta-${i}`).innerHTML = `${nomeCartas[i]}`
         }
     }
+}
+
+function atualizaHorario(){
+    fetch('../../data/hora', {method: 'GET'})
+    .then(response => response.json()).then((hora) => {
+        console.log(hora)
+    })
 }

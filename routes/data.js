@@ -87,4 +87,37 @@ router.get('/carta', (req, res) => {
     }
 })
 
+router.get('/hora', (req, res) => {
+    const cookies = functions.RetornaCookies(req);
+    connection.getConnection(function(err, poolConnection){
+        if(err) console.log(err);
+        poolConnection.query(`SELECT id, hora FROM usuarios WHERE id = '${cookies.UserID}';`, (error, result) => {
+            if(error) throw error;
+            else {
+                let lastClickTime = parseDate(result[0].hora);
+                let currentTime = new Date();
+                console.log(currentTime, lastClickTime, currentTime - lastClickTime);
+
+                if (lastClickTime === null || currentTime - lastClickTime > 24 * 60 * 60 * 1000) {
+                    lastClickTime = currentTime;
+                    let mysqlDate = lastClickTime.toISOString().slice(0, 19).replace('T', ' ');
+                    poolConnection.query(`UPDATE usuarios SET hora = '${mysqlDate}' WHERE id = '${cookies.UserID}';`, (error, result) => {
+                        if(error) throw error;
+                        else {
+                            console.log("Registro atualizado com sucesso")
+                        }
+                    })
+                } else {
+                        console.log("Ainda não passou 24h")
+                }
+            }
+        })
+    })    
+})
+
+function parseDate(input) {
+    let parts = input.match(/(\d+)/g);
+    return new Date(parts[0], parts[1]-1, parts[2], parts[3], parts[4], parts[5]);
+  }
+
 module.exports = router;
